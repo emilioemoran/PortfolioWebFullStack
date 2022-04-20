@@ -1,0 +1,226 @@
+<div class="card mat-card">
+  <div id="education">
+    <div class="card-titles">
+      <h2>Educación</h2>
+      <div class="btn-edit">
+        <a class="btn-right"
+          ><i
+            class="fa fa-plus"
+            data-bs-toggle="modal"
+            data-bs-target="#newEdu"
+          ></i
+        ></a>
+      </div>
+    </div>
+    <div>
+      <ul class="items-list" id="eduList"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Modal New Education -->
+<div
+  class="modal fade"
+  id="newEdu"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="inputSchool">Escuela</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSchool"
+            placeholder="Enter school"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputTitle">Titulo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputTitle"
+            placeholder="Enter title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputSchoolImage">Imagen</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSchoolImage"
+            placeholder="Enter image"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputCareer">Carrera</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputCareer"
+            placeholder="Enter career"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputScore">GPA</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputScore"
+            placeholder="Enter score"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputSchoolInitial">Fecha Inicio</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSchoolInitial"
+            placeholder="Enter initial date"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputSchoolEnd">Fecha Final</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSchoolEnd"
+            placeholder="Enter end date"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          onclick="saveNewEduModal()"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Education -->
+<div
+  class="modal fade"
+  id="editEdu"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="inputSchoolEdit">Escuela</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSchoolEdit"
+            placeholder="Enter school"
+            readonly
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputTitleEdit">Titulo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputTitleEdit"
+            placeholder="Enter title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputSchoolImageEdit">Imagen</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSchoolImageEdit"
+            placeholder="Enter image"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputCareerEdit">Carrera</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputCareerEdit"
+            placeholder="Enter career"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputScoreEdit">GPA</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputScoreEdit"
+            placeholder="Enter score"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputSchoolInitialEdit">Fecha Inicio</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSchoolInitialEdit"
+            placeholder="Enter initial date"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputSchoolEndEdit">Fecha Final</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSchoolEndEdit"
+            placeholder="Enter end date"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          onclick="saveEditEduModal($('#inputSchoolEdit').val())"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

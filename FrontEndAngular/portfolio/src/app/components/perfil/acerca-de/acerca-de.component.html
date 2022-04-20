@@ -1,0 +1,64 @@
+<div class="card mat-card">
+  <div class="card-titles">
+    <h2>Acerca de</h2>
+    <div class="btn-edit">
+      <a class="btn-right"
+        ><i
+          class="fa fa-pen"
+          data-bs-toggle="modal"
+          data-bs-target="#editAbout"
+        ></i
+      ></a>
+    </div>
+  </div>
+  <div id="about">Descripcion Profesional</div>
+</div>
+
+<!-- Modal Edit About -->
+<div
+  class="modal fade"
+  id="editAbout"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="inputAbout">About</label>
+          <textarea
+            type="text"
+            class="form-control"
+            id="inputAbout"
+            placeholder="Enter about"
+          ></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          onclick="saveEditAboutModal()"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
