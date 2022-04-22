@@ -21,9 +21,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import com.bezkoder.springjwt.security.jwt.AuthEntryPointJwt;
-import com.bezkoder.springjwt.security.jwt.AuthTokenFilter;
-import com.bezkoder.springjwt.security.services.UserDetailsServiceImpl;
+
+import com.portfolio.Portfolio.Security.jwt.AuthEntryPointJwt;
+import com.portfolio.Portfolio.Security.jwt.AuthTokenFilter;
+import com.portfolio.Portfolio.Security.services.UserDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(

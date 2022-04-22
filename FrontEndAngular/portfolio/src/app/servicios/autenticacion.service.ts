@@ -19,6 +19,7 @@ export class AutenticacionService {
       map((data) => {
         sessionStorage.setItem('currentUser', JSON.stringify(data));
         return data;
+        //comentario para ver
       })
     );
   }
