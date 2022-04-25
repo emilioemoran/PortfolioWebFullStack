@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,17 +27,19 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nombre;
-    private String apellido;
+    @OneToOne
+    private User usuario;
     private String fechaNacimiento;
     private String nacionalidad;
-    private String mail;
+   
     private String sobreMi;
     private String ocupacion;
     private String imagenDeFondo;
     private String fotoPerfil;
     @OneToMany(cascade = {CascadeType.ALL})
     private List<Educacion> estudios;
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<Experiencia> experiencias;
     @OneToMany(cascade = {CascadeType.ALL})
     private List<Habilidad> habilidades;
     @OneToMany(cascade = {CascadeType.ALL})
@@ -46,21 +49,24 @@ public class Persona {
         
     }
 
-    public Persona(long id, String nombre, String apellido, String fechaNacimiento, String nacionalidad, String mail, String sobreMi, String ocupacion, String imagenDeFondo, String fotoPerfil, List<Educacion> estudios, List<Habilidad> habilidades, List<Proyecto> proyectos) {
+    public Persona(Long id, User usuario, String fechaNacimiento, String nacionalidad, String sobreMi, String ocupacion, String imagenDeFondo, String fotoPerfil, List<Educacion> estudios, List<Experiencia> experiencias, List<Habilidad> habilidades, List<Proyecto> proyectos) {
         this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.usuario = usuario;
         this.fechaNacimiento = fechaNacimiento;
         this.nacionalidad = nacionalidad;
-        this.mail = mail;
         this.sobreMi = sobreMi;
         this.ocupacion = ocupacion;
         this.imagenDeFondo = imagenDeFondo;
         this.fotoPerfil = fotoPerfil;
         this.estudios = estudios;
+        this.experiencias = experiencias;
         this.habilidades = habilidades;
         this.proyectos = proyectos;
     }
+
+    
+
+    
 
     
     
