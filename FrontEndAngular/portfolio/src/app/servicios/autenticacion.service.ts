@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { JsonPipe } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class AutenticacionService {
-  url = '';
+  url = 'http://localhost:8080/api/auth';
   currentUserSubject: BehaviorSubject<any>;
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<any>(
@@ -15,9 +14,20 @@ export class AutenticacionService {
   }
 
   iniciarSesion(credenciales: any): Observable<any> {
-    return this.httpClient.post(this.url, credenciales).pipe(
+    return this.httpClient.post(this.url + '/login', credenciales).pipe(
       map((data) => {
         sessionStorage.setItem('currentUser', JSON.stringify(data));
+        console.log(sessionStorage.getItem('currentUser'));
+        return data;
+        //comentario para ver
+      })
+    );
+  }
+  signUp(credenciales: any): Observable<any> {
+    return this.httpClient.post(this.url + '/signup', credenciales).pipe(
+      map((data) => {
+        sessionStorage.setItem('currentUser', JSON.stringify(data));
+        console.log(sessionStorage.getItem('currentUser'));
         return data;
         //comentario para ver
       })

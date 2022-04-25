@@ -12,6 +12,8 @@ import { EducacionComponent } from './components/perfil/educacion/educacion.comp
 import { HabilidadesComponent } from './components/perfil/habilidades/habilidades.component';
 import { ProyectosComponent } from './components/perfil/proyectos/proyectos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EducacionComponent,
     HabilidadesComponent,
     ProyectosComponent,
+    SignupComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

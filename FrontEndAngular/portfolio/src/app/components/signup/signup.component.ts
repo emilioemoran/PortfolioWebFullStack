@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-singup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
   form: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
@@ -49,11 +49,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit(event: Event) {
     event.preventDefault;
-    this.autentificationService
-      .iniciarSesion(this.form.value)
-      .subscribe((data) => {
-        console.log(JSON.stringify('data' + data));
-        this.route.navigate(['/perfil']);
-      });
+    this.autentificationService.signUp(this.form.value).subscribe((data) => {
+      console.log(JSON.stringify('data' + data));
+      this.route.navigate(['/perfil']);
+    });
   }
 }

@@ -27,7 +27,7 @@
                     Sign into your account
                   </h5>
 
-                  <!--  <div class="form-outline mb-4">
+                  <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example17">Email</label>
                     <input
                       formControlName="email"
@@ -50,36 +50,8 @@
                         El email es requerido
                       </p>
                     </div>
-                  </div> -->
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="exampleInputPassword1"
-                      >Username</label
-                    >
-                    <input
-                      formControlName="username"
-                      type="password"
-                      id="form2Example27"
-                      class="form-control form-control-lg"
-                      [ngClass]="{
-                        'is-valid': !Username?.errors && Username?.touched,
-                        'is-invalid': Username?.errors && Username?.touched
-                      }"
-                    />
-                    <div *ngIf="Username?.errors && Username?.touched">
-                      <p
-                        *ngIf="Username?.hasError('username')"
-                        class="text-danger"
-                      >
-                        El formato de email debe ser valido
-                      </p>
-                      <p
-                        *ngIf="Username?.hasError('required')"
-                        class="text-danger"
-                      >
-                        El usuario es requerido
-                      </p>
-                    </div>
                   </div>
+
                   <div class="form-outline mb-4">
                     <label class="form-label" for="exampleInputPassword1"
                       >Password</label
@@ -109,21 +81,41 @@
                       </p>
                     </div>
                   </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="exampleInputPassword1"
+                      >Username</label
+                    >
+                    <input
+                      formControlName="username"
+                      type="password"
+                      id="form2Example27"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-valid': !Username?.errors && Username?.touched,
+                        'is-invalid': Username?.errors && Username?.touched
+                      }"
+                    />
+                    <div *ngIf="Username?.errors && Username?.touched">
+                      <p
+                        *ngIf="Username?.hasError('username')"
+                        class="text-danger"
+                      >
+                        El formato de email debe ser valido
+                      </p>
+                      <p
+                        *ngIf="Username?.hasError('required')"
+                        class="text-danger"
+                      >
+                        El usuario es requerido
+                      </p>
+                    </div>
+                  </div>
 
                   <div class="pt-1 mb-4">
                     <button class="btn btn-dark btn-lg btn-block" type="submit">
-                      Login
+                      Register
                     </button>
                   </div>
-                  <p class="mb-5 pb-lg-2" style="color: #393f81">
-                    Don't have an account?
-                    <a
-                      [routerLink]="['/signup']"
-                      routerLinkActive="router-link-active"
-                      style="color: #393f81"
-                      >Register here</a
-                    >
-                  </p>
                 </form>
               </div>
             </div>
