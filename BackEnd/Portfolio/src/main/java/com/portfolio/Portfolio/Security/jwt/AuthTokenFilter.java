@@ -10,6 +10,7 @@ package com.portfolio.Portfolio.Security.jwt;
  */
 import com.portfolio.Portfolio.Security.services.UserDetailsServiceImpl;
 import java.io.IOException;
+import java.util.Enumeration;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -49,6 +50,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 		filterChain.doFilter(request, response);
 	}
 	private String parseJwt(HttpServletRequest request) {
+                
 		String headerAuth = request.getHeader("Authorization");
 		if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
 			return headerAuth.substring(7, headerAuth.length());

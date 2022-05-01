@@ -8,6 +8,7 @@ package com.portfolio.Portfolio.playload.request;
  *
  * @author eemoran
  */
+import com.portfolio.Portfolio.model.Persona;
 import java.util.Set;
 
 import javax.validation.constraints.*;
@@ -22,11 +23,12 @@ public class SignUpRequest {
   @Email
   private String email;
 
-  private Set<String> role;
 
   @NotBlank
   @Size(min = 6, max = 40)
   private String password;
+  
+  private Persona persona;
 
   public String getUsername() {
     return username;
@@ -51,12 +53,13 @@ public class SignUpRequest {
   public void setPassword(String password) {
     this.password = password;
   }
-
-  public Set<String> getRole() {
-    return this.role;
+  
+  public Persona getPersona() {
+    return persona;
   }
 
-  public void setRole(Set<String> role) {
-    this.role = role;
+  public void setPersona(Persona persona) {
+    this.persona = persona;
   }
+
 }

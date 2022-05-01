@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,8 +26,7 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
-    private User usuario;
+    
     private String fechaNacimiento;
     private String nacionalidad;
    
@@ -49,9 +47,8 @@ public class Persona {
         
     }
 
-    public Persona(Long id, User usuario, String fechaNacimiento, String nacionalidad, String sobreMi, String ocupacion, String imagenDeFondo, String fotoPerfil, List<Educacion> estudios, List<Experiencia> experiencias, List<Habilidad> habilidades, List<Proyecto> proyectos) {
+    public Persona(Long id, String fechaNacimiento, String nacionalidad, String sobreMi, String ocupacion, String imagenDeFondo, String fotoPerfil, List<Educacion> estudios, List<Experiencia> experiencias, List<Habilidad> habilidades, List<Proyecto> proyectos) {
         this.id = id;
-        this.usuario = usuario;
         this.fechaNacimiento = fechaNacimiento;
         this.nacionalidad = nacionalidad;
         this.sobreMi = sobreMi;
@@ -63,6 +60,8 @@ public class Persona {
         this.habilidades = habilidades;
         this.proyectos = proyectos;
     }
+
+   
 
     
 

@@ -8,8 +8,6 @@ package com.portfolio.Portfolio.controller;
  *
  * @author eemoran
  */
-import java.util.List;
-import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -79,7 +77,7 @@ public class AuthController {
 		// Create new user's account
 		User user = new User(signUpRequest.getUsername(), 
 							 signUpRequest.getEmail(),
-							 encoder.encode(signUpRequest.getPassword()));
+							 encoder.encode(signUpRequest.getPassword()), signUpRequest.getPersona());
 //		Set<String> strRoles = signUpRequest.getRole();
 //		Set<Role> roles = new HashSet<>();
 //		if (strRoles == null) {
@@ -108,6 +106,17 @@ public class AuthController {
 //		}
 //		user.setRoles(roles);
 		userRepository.save(user);
-		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+                
+                Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(signUpRequest.getUsername(), signUpRequest.getPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+                String jwt = jwtUtils.generateJwtToken(authentication);
+		
+		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+		return ResponseEntity.ok(new JwtResponse(jwt, 
+												 userDetails.getId(), 
+												 userDetails.getUsername(), 
+												 userDetails.getEmail()));
+//												 roles));
 	}
 }
