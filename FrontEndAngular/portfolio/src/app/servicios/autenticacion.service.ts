@@ -17,6 +17,7 @@ export class AutenticacionService {
     return this.httpClient.post(this.url + '/login', credenciales).pipe(
       map((data) => {
         sessionStorage.setItem('currentUser', JSON.stringify(data));
+        this.currentUserSubject.next(data);
         console.log(sessionStorage.getItem('currentUser'));
         return data;
         //comentario para ver
@@ -27,10 +28,15 @@ export class AutenticacionService {
     return this.httpClient.post(this.url + '/signup', credenciales).pipe(
       map((data) => {
         sessionStorage.setItem('currentUser', JSON.stringify(data));
+        this.currentUserSubject.next(data);
         console.log(sessionStorage.getItem('currentUser'));
         return data;
         //comentario para ver
       })
     );
+  }
+
+  get UsuarioAutenticado() {
+    return this.currentUserSubject.value;
   }
 }

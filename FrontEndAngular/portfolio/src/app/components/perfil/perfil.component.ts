@@ -7,11 +7,13 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
   styleUrls: ['./perfil.component.css'],
 })
 export class PerfilComponent implements OnInit {
-  constructor(private portfolioService: PortfolioService) {
-    this.portfolioService.obtenerDatosPersona(1).subscribe((data) => {
+  miPortfolio: any;
+  constructor(private portfolioService: PortfolioService) {}
+
+  ngOnInit(): void {
+    this.portfolioService.obtenerDatosPersona(13).subscribe((data) => {
       console.log(JSON.stringify('data' + data));
+      this.miPortfolio.username = data[0];
     });
   }
-
-  ngOnInit(): void {}
 }
