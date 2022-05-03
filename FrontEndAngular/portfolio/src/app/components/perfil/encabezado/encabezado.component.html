@@ -32,13 +32,13 @@
     </div>
     <div id="info-data">
       <div>
-        <h1 id="info-name">{{ encabezado.nombre }}</h1>
+        <h1 id="info-name">{{ persona.nombre }}</h1>
         <div>
-          <span id="info-position">{{ encabezado.posicion }}</span> en
-          <span id="info-company">{{ encabezado.compania }}</span>
+          <span id="info-position">{{ persona.posicion }}</span> en
+          <span id="info-company">{{ persona.compania }}</span>
         </div>
         <div id="info-contact">
-          <span id="info-ubication">{{ encabezado.ubicacion }}</span>
+          <span id="info-ubication">{{ persona.ubicacion }}</span>
           <span><a href="#">Información de contacto</a></span>
         </div>
       </div>
@@ -49,7 +49,7 @@
               id="info-company-img"
               src="https://convocatorias.conicet.gov.ar/wp-content/uploads/logo-CONICET_opt.png"
             />
-            <h2 id="info-company-name">{{ encabezado.compania }}</h2>
+            <h2 id="info-company-name">{{ persona.compania }}</h2>
           </a>
         </li>
         <li>
@@ -144,7 +144,7 @@
           type="button"
           class="btn btn-primary"
           data-bs-dismiss="modal"
-          (click)="saveEditProfileModal()"
+          (click)="saveEditProfileModal(persona.id, encabezado)"
         >
           Save changes
         </button>

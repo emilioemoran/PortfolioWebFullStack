@@ -116,6 +116,11 @@
                       Register
                     </button>
                   </div>
+                  <div *ngIf="error">
+                    <p *ngIf="error" class="text-danger">
+                      {{ error }}
+                    </p>
+                  </div>
                 </form>
               </div>
             </div>

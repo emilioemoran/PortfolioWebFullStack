@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rx';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  error: string = '';
   constructor(
     private formBuilder: FormBuilder,
     private autentificationService: AutenticacionService,
@@ -49,11 +52,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit(event: Event) {
     event.preventDefault;
-    this.autentificationService
-      .iniciarSesion(this.form.value)
-      .subscribe((data) => {
+    this.autentificationService.iniciarSesion(this.form.value).subscribe(
+      (data) => {
         console.log(JSON.stringify('data' + data));
-        this.route.navigate(['/perfil']);
-      });
+        this.route.navigate(['/perfil', { id: data.id }]);
+      },
+      (err) => {
+        console.log(err);
+        this.error = err;
+      }
+    );
   }
 }

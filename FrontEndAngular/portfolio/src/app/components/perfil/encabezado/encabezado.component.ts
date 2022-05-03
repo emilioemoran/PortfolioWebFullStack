@@ -1,18 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { observeOn } from 'rxjs/operators';
+import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
   selector: 'app-encabezado',
   templateUrl: './encabezado.component.html',
   styleUrls: ['./encabezado.component.css'],
 })
-export class EncabezadoComponent {
+export class EncabezadoComponent implements OnInit {
   modalData = { nombre: '', compania: '', ubicacion: '', posicion: '' };
   encabezado = { nombre: '', compania: '', ubicacion: '', posicion: '' };
 
-  constructor(/* public dialog: MatDialog */) {}
+  constructor(private portfolioService: PortfolioService) {}
 
-  saveEditProfileModal() {
+  @Input()
+  persona!: {
+    id: number;
+    nombre: String;
+    posicion: String;
+    compania: String;
+    ubicacion: String;
+  };
+
+  ngOnInit(): void {}
+
+  saveEditProfileModal(id: number, body: any) {
     this.encabezado = this.modalData;
+    this.portfolioService.modificarDatosPersona(id, this.encabezado);
   }
 
   /* showModalEditaPerfil() {

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">sdfsdf</a>
+  <a class="navbar-brand" href="#">{{ miPortfolio.name }}</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -26,7 +26,7 @@
     </form>
   </div>
 </nav>
-<app-encabezado></app-encabezado>
+<app-encabezado [persona]="persona"></app-encabezado>
 <app-acerca-de></app-acerca-de>
 <app-experiencia></app-experiencia>
 <app-educacion></app-educacion>

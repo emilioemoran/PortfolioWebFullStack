@@ -115,6 +115,11 @@
                       Login
                     </button>
                   </div>
+                  <div *ngIf="error">
+                    <p *ngIf="error" class="text-danger">
+                      Usuario o contraseña incorrectos
+                    </p>
+                  </div>
                   <p class="mb-5 pb-lg-2" style="color: #393f81">
                     Don't have an account?
                     <a

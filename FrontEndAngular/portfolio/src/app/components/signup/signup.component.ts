@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   form: FormGroup;
+  error: any;
   constructor(
     private formBuilder: FormBuilder,
     private autentificationService: AutenticacionService,
@@ -49,9 +50,15 @@ export class SignupComponent implements OnInit {
 
   onSubmit(event: Event) {
     event.preventDefault;
-    this.autentificationService.signUp(this.form.value).subscribe((data) => {
-      console.log(JSON.stringify('data' + data));
-      this.route.navigate(['/perfil']);
-    });
+    this.autentificationService.signUp(this.form.value).subscribe(
+      (data) => {
+        console.log(JSON.stringify('data' + data));
+        this.route.navigate(['/perfil', { id: data.id }]);
+      },
+      (err) => {
+        console.log(err);
+        this.error = JSON.stringify(err.error.message);
+      }
+    );
   }
 }
