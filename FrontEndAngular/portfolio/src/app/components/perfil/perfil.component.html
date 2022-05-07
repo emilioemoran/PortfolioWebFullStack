@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">{{ miPortfolio.name }}</a>
+  <a class="navbar-brand" href="#">{{ miPortfolio.username }}</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -20,7 +20,10 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      <button
+        class="btn btn-outline-success my-2 my-sm-0"
+        [routerLink]="['/login']"
+      >
         Login
       </button>
     </form>

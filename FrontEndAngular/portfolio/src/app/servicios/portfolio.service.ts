@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -15,6 +15,9 @@ export class PortfolioService {
   }
 
   modificarDatosPersona(id: number, body: any): Observable<any> {
-    return this.http.post<any>(this.url + 'persona/' + id, body);
+    return this.http.post<any>(
+      this.url + 'persona/edit/encabezado/' + id,
+      body
+    );
   }
 }

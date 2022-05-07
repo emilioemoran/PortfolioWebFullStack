@@ -2,24 +2,24 @@
   <div id="profile-background">
     <img
       id="info-back-img"
-      src="https://png.pngtree.com/thumb_back/fw800/background/20190223/ourmid/pngtree-black-shading-red-shard-geometry-banner-background-shadingred-debrisred-glowgeometry-image_80184.jpg"
+      [src]="
+        persona.encabezado.imagenDeFondo!
+          ? persona.encabezado.imagenDeFondo
+          : defoultWall
+      "
     />
   </div>
-  <!-- <div id="profile-background">
-    <img id="info-back-img" src="../../../imagenes/banner.webp" />
-  </div> -->
   <div id="info" style="padding: 16px">
     <div id="info-img">
       <img
         id="info-user-img"
         class="profile-image"
-        src="https://i2.wp.com/imagenes.milenio.com/E-yJnq9EhkZhWaU7T_2utkyTymQ=/958x596/smart/https://www.milenio.com/uploads/media/2018/10/05/steve-jobs-perdio-vida-consecuencia_0_199_1193_742.jpg?w=640&ssl=1"
+        [src]="
+          persona.encabezado.fotoPerfil!
+            ? persona.encabezado.fotoPerfil
+            : defoultProfileImg
+        "
       />
-      <!-- <img
-        id="info-user-img"
-        class="profile-image"
-        src="../../../imagenes/avatar.png"
-      /> -->
       <div class="btn-edit">
         <a class="btn-right"
           ><i
@@ -32,41 +32,22 @@
     </div>
     <div id="info-data">
       <div>
-        <h1 id="info-name">{{ persona.nombre }}</h1>
+        <h1 id="info-name">{{ persona.encabezado.nombre }}</h1>
+        <br />
+        <h5 id="info-name">
+          Fecha de Nacimiento: {{ persona.encabezado.fechaNacimiento }}
+        </h5>
+        <h5 id="info-name">
+          Nacionalidad: {{ persona.encabezado.nacionalidad }}
+        </h5>
         <div>
-          <span id="info-position">{{ persona.posicion }}</span> en
-          <span id="info-company">{{ persona.compania }}</span>
+          <span id="info-position">{{ persona.encabezado.posicion }}</span> en
+          <span id="info-company">{{ persona.encabezado.compania }}</span>
         </div>
         <div id="info-contact">
-          <span id="info-ubication">{{ persona.ubicacion }}</span>
-          <span><a href="#">Información de contacto</a></span>
+          <span id="info-ubication">{{ persona.encabezado.ubicacion }}</span>
         </div>
       </div>
-      <ul id="info-details">
-        <li>
-          <a href="#">
-            <img
-              id="info-company-img"
-              src="https://convocatorias.conicet.gov.ar/wp-content/uploads/logo-CONICET_opt.png"
-            />
-            <h2 id="info-company-name">{{ persona.compania }}</h2>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img
-              id="info-school-img"
-              src="https://inerciacero.files.wordpress.com/2011/07/logo-uba.png"
-            />
-            <h2 id="info-school-name">Nombre de la Universidad</h2>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div id="info-actions">
-      <button type="button" class="btn btn-primary">Tengo interés en</button>
-      <button type="button" class="btn btn-light">Añadir Sección</button>
-      <button type="button" class="btn btn-light">Más</button>
     </div>
   </div>
 </div>
@@ -96,58 +77,108 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label for="inputName">Nombre</label>
+          <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
           <input
             type="text"
             class="form-control"
-            id="inputName"
-            placeholder="Enter name"
-            [(ngModel)]="modalData.nombre"
+            id="inputFechaNacimiento"
+            placeholder="Enter fecha de nacimiento"
+            [(ngModel)]="modalData.fechaNacimiento"
           />
         </div>
-        <div class="form-group">
-          <label for="inputPosition">Posición</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputPosition"
-            placeholder="Enter position"
-            [(ngModel)]="modalData.posicion"
-          />
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="inputNacionalidad">Nacionalidad</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputNacionalidad"
+              placeholder="Enter nacionalidad"
+              [(ngModel)]="modalData.nacionalidad"
+            />
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="inputName">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                placeholder="Enter name"
+                [(ngModel)]="modalData.nombre"
+                [value]="persona.encabezado.nombre"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputPosition">Posición</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputPosition"
+                placeholder="Enter position"
+                [(ngModel)]="modalData.posicion"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputCompany">Compañia</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputCompany"
+                placeholder="Enter company"
+                [(ngModel)]="modalData.compania"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputUbication">Ubicación</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputUbication"
+                placeholder="Enter ubication"
+                [(ngModel)]="modalData.ubicacion"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputImagenDeFondo">URL de Imagen de Fondo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputImagenDeFondo"
+                placeholder="Enter ImagenDeFondo"
+                [(ngModel)]="modalData.imagenDeFondo"
+                [value]="persona.encabezado.nombre"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputFotoPerfil">URL de Foto de Perfil</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputFotoPerfil"
+                placeholder="Enter FotoPerfil"
+                [(ngModel)]="modalData.fotoPerfil"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              (click)="saveEditProfileModal(persona.id)"
+            >
+              Save changes
+            </button>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="inputCompany">Compañia</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputCompany"
-            placeholder="Enter company"
-            [(ngModel)]="modalData.compania"
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputUbication">Ubicación</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputUbication"
-            placeholder="Enter ubication"
-            [(ngModel)]="modalData.ubicacion"
-          />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-bs-dismiss="modal"
-          (click)="saveEditProfileModal(persona.id, encabezado)"
-        >
-          Save changes
-        </button>
       </div>
     </div>
   </div>
