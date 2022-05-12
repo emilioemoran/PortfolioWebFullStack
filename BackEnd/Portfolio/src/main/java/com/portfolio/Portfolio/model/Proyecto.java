@@ -28,6 +28,11 @@ public class Proyecto {
         this.id = id;
         this.nombre = nombre;
     }
+
+    public Proyecto() {
+    }
+    
+    
     
     
     

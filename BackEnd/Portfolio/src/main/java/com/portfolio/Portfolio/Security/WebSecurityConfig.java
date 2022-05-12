@@ -27,10 +27,7 @@ import com.portfolio.Portfolio.Security.jwt.AuthTokenFilter;
 import com.portfolio.Portfolio.Security.services.UserDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(
-		// securedEnabled = true,
-		// jsr250Enabled = true,
-		prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;

@@ -10,6 +10,8 @@ package com.portfolio.Portfolio.playload.request;
  */
 import com.portfolio.Portfolio.model.Persona;
 import java.util.Set;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 import javax.validation.constraints.*;
 
@@ -27,7 +29,7 @@ public class SignUpRequest {
   @NotBlank
   @Size(min = 6, max = 40)
   private String password;
-  
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Persona persona;
 
   public String getUsername() {
@@ -55,7 +57,7 @@ public class SignUpRequest {
   }
   
   public Persona getPersona() {
-    return persona;
+    return persona ;
   }
 
   public void setPersona(Persona persona) {

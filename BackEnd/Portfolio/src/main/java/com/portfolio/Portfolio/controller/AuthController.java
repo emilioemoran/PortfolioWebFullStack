@@ -8,6 +8,7 @@ package com.portfolio.Portfolio.controller;
  *
  * @author eemoran
  */
+import com.portfolio.Portfolio.Repository.PersonaRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +22,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-//import com.bezkoder.springjwt.models.ERole;
-//import com.bezkoder.springjwt.models.Role;
 import com.portfolio.Portfolio.Repository.UserRepository;
 import com.portfolio.Portfolio.Security.jwt.JwtUtils;
 import com.portfolio.Portfolio.Security.services.UserDetailsImpl;
+import com.portfolio.Portfolio.model.Encabezado;
+import com.portfolio.Portfolio.model.Persona;
 import com.portfolio.Portfolio.model.User;
 import com.portfolio.Portfolio.playload.request.LoginRequest;
 import com.portfolio.Portfolio.playload.request.SignUpRequest;
@@ -39,8 +40,8 @@ public class AuthController {
 	AuthenticationManager authenticationManager;
 	@Autowired
 	UserRepository userRepository;
-//	@Autowired
-//	RoleRepository roleRepository;
+        @Autowired
+	PersonaRepository persRepository;
 	@Autowired
 	PasswordEncoder encoder;
 	@Autowired
@@ -53,14 +54,11 @@ public class AuthController {
 		String jwt = jwtUtils.generateJwtToken(authentication);
 		
 		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();		
-//		List<String> roles = userDetails.getAuthorities().stream()
-//				.map(item -> item.getAuthority())
-//				.collect(Collectors.toList());
+
 		return ResponseEntity.ok(new JwtResponse(jwt, 
 												 userDetails.getId(), 
 												 userDetails.getUsername(), 
 												 userDetails.getEmail()));
-//												 roles));
 	}
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
@@ -74,38 +72,13 @@ public class AuthController {
 					.badRequest()
 					.body(new MessageResponse("Error: Email is already in use!"));
 		}
-		// Create new user's account
+                Persona pers = new Persona();
+                persRepository.save(pers);
 		User user = new User(signUpRequest.getUsername(), 
 							 signUpRequest.getEmail(),
-							 encoder.encode(signUpRequest.getPassword()), signUpRequest.getPersona());
-//		Set<String> strRoles = signUpRequest.getRole();
-//		Set<Role> roles = new HashSet<>();
-//		if (strRoles == null) {
-//			Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-//					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//			roles.add(userRole);
-//		} else {
-//			strRoles.forEach(role -> {
-//				switch (role) {
-//				case "admin":
-//					Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-//							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//					roles.add(adminRole);
-//					break;
-//				case "mod":
-//					Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
-//							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//					roles.add(modRole);
-//					break;
-//				default:
-//					Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-//							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//					roles.add(userRole);
-//				}
-//			});
-//		}
-//		user.setRoles(roles);
+							 encoder.encode(signUpRequest.getPassword()), pers);
 		userRepository.save(user);
+                
                 
                 Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(signUpRequest.getUsername(), signUpRequest.getPassword()));
@@ -117,6 +90,5 @@ public class AuthController {
 												 userDetails.getId(), 
 												 userDetails.getUsername(), 
 												 userDetails.getEmail()));
-//												 roles));
 	}
 }

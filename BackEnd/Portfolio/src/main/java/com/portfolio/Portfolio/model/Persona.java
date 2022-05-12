@@ -6,11 +6,13 @@ package com.portfolio.Portfolio.model;
 
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,14 +28,9 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    private String fechaNacimiento;
-    private String nacionalidad;
-   
     private String sobreMi;
-    private String ocupacion;
-    private String imagenDeFondo;
-    private String fotoPerfil;
+   
+    @Embedded private Encabezado encabezado;
     @OneToMany(cascade = {CascadeType.ALL})
     private List<Educacion> estudios;
     @OneToMany(cascade = {CascadeType.ALL})
@@ -44,22 +41,30 @@ public class Persona {
     private List<Proyecto> proyectos;
     
     public Persona(){
-        
+         this.encabezado = new Encabezado();
+         
+         encabezado.setFotoPerfil("");
+         encabezado.setImagenDeFondo("");
     }
 
-    public Persona(Long id, String fechaNacimiento, String nacionalidad, String sobreMi, String ocupacion, String imagenDeFondo, String fotoPerfil, List<Educacion> estudios, List<Experiencia> experiencias, List<Habilidad> habilidades, List<Proyecto> proyectos) {
+    public Persona(Long id, String sobreMi, Encabezado encabezado, List<Educacion> estudios, List<Experiencia> experiencias, List<Habilidad> habilidades, List<Proyecto> proyectos) {
         this.id = id;
-        this.fechaNacimiento = fechaNacimiento;
-        this.nacionalidad = nacionalidad;
         this.sobreMi = sobreMi;
-        this.ocupacion = ocupacion;
-        this.imagenDeFondo = imagenDeFondo;
-        this.fotoPerfil = fotoPerfil;
+        this.encabezado = encabezado;
         this.estudios = estudios;
         this.experiencias = experiencias;
         this.habilidades = habilidades;
         this.proyectos = proyectos;
     }
+
+  
+    
+
+    
+
+    
+
+   
 
    
 

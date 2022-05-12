@@ -27,22 +27,28 @@ public class Educacion {
     private String escuela;
     private String titulo;
     private String carrera;
-    private Float puntaje;
-    private int inicio;
-    private int fin;
+    private String imagen;
+    private Double gpa;
+    private String fechaInicio;
+    private String fechaFin;
 
     public Educacion() {
     }
 
-    public Educacion(int id, String escuela, String titulo, String carrera, Float puntaje, int inicio, int fin) {
+    public Educacion(int id, String escuela, String titulo, String carrera, String imagen, Double gpa, String fechaInicio, String fechaFin) {
         this.id = id;
         this.escuela = escuela;
         this.titulo = titulo;
         this.carrera = carrera;
-        this.puntaje = puntaje;
-        this.inicio = inicio;
-        this.fin = fin;
+        this.imagen = imagen;
+        this.gpa = gpa;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
     }
+
+    
+
+    
     
     
     

@@ -4,6 +4,7 @@
  */
 package com.portfolio.Portfolio.model;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,24 +16,20 @@ import lombok.Setter;
  *
  * @author eemoran
  */
+@Embeddable
 @Getter @Setter
-@Entity
-public class Habilidad {
+public class Encabezado {
     
-     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-     private int id;
-     private String nombre;
-     private String valor;
+    private String fechaNacimiento;
+    private String nacionalidad;
+    private String nombre;
+    private String posicion;
+    private String compania;
+    private String ubicacion;
+    private String imagenDeFondo;
+    private String fotoPerfil;
 
-    public Habilidad(int id, String nombre, String valor) {
-        this.id = id;
-        this.nombre = nombre;
-        this.valor = valor;
-    }
-
-    public Habilidad() {
-    }
-     
-     
+    
 }
+
+
