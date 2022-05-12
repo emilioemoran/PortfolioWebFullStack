@@ -17,8 +17,8 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     const userId = Number(this.route.snapshot.paramMap.get('id'));
+
     this.portfolioService.obtenerDatosPersona(userId).subscribe((data) => {
-      console.log(JSON.stringify('data' + data));
       this.miPortfolio.username = data.username;
       this.persona = data.persona;
     });

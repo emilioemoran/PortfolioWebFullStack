@@ -11,7 +11,7 @@
       ></a>
     </div>
   </div>
-  <div id="about">Descripcion Profesional</div>
+  <div id="about">{{ persona.sobreMi }}</div>
 </div>
 
 <!-- Modal Edit About -->
@@ -41,9 +41,11 @@
           <label for="inputAbout">About</label>
           <textarea
             type="text"
+            name="message"
             class="form-control"
             id="inputAbout"
             placeholder="Enter about"
+            [(ngModel)]="modalData.message"
           ></textarea>
         </div>
       </div>
@@ -54,7 +56,8 @@
         <button
           type="button"
           class="btn btn-primary"
-          onclick="saveEditAboutModal()"
+          data-bs-dismiss="modal"
+          (click)="saveEditAboutModal(persona.id)"
         >
           Save changes
         </button>

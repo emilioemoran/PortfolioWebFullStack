@@ -17,21 +17,9 @@ export class SignupComponent implements OnInit {
     private route: Router
   ) {
     this.form = this.formBuilder.group({
-      /*  id: [''],
-      username: [''],
-      email: ['', [Validators.required, Validators.email]],
-      accessToken: [''],
-      tokenType: [''], */
       username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      /* email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-       deviceInfo: this.formBuilder.group({
-        deviceId: [''],
-        deviceType: [''],
-        notificationToken: [''],
-      }), */
     });
   }
 
@@ -52,11 +40,9 @@ export class SignupComponent implements OnInit {
     event.preventDefault;
     this.autentificationService.signUp(this.form.value).subscribe(
       (data) => {
-        console.log(JSON.stringify('data' + data));
         this.route.navigate(['/perfil', { id: data.id }]);
       },
       (err) => {
-        console.log(err);
         this.error = JSON.stringify(err.error.message);
       }
     );

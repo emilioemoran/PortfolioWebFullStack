@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     this.autentificationService.iniciarSesion(this.form.value).subscribe(
       (data) => {
         console.log(JSON.stringify('data' + data));
-        this.route.navigate(['/perfil', { persona: data }]);
+        this.route.navigate(['/perfil', { id: data.id }]);
       },
       (err) => {
         console.log(err);

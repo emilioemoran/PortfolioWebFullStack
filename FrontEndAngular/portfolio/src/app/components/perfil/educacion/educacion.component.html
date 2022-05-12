@@ -13,7 +13,46 @@
       </div>
     </div>
     <div>
-      <ul class="items-list" id="eduList"></ul>
+      <ul class="items-list" id="eduList">
+        <li *ngFor="let educacion of persona.estudios">
+          <div class="card mb-3" style="max-width: 540px">
+            <div class="col container-fluid">
+              <div class="row justify-content-md-right">
+                <a class="d-flex flex-row-reverse"
+                  ><i
+                    class="fa fa-minus-circle"
+                    (click)="deleteEducacion(persona.id, educacion)"
+                  ></i
+                ></a>
+              </div>
+              <div class="row container-fluid">
+                <div class="col-md-4">
+                  <img
+                    src="{{
+                      educacion.imagen! ? educacion.imagen : defoultImage
+                    }}"
+                    class="card-img"
+                    alt="Colocar Imagen URL"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ educacion.titulo }}</h5>
+                    <h5 class="card-title">{{ educacion.escuela }}</h5>
+                    <h5 class="card-title">{{ educacion.gpa }}</h5>
+                    <p class="card-text">
+                      <small class="text-muted"
+                        >Desde: {{ educacion.fechaInicio }} Hasta:
+                        {{ educacion.fechaFin }}</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
@@ -30,7 +69,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cargar Educacion</h5>
         <button
           type="button"
           class="close"
@@ -42,12 +81,13 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label for="inputSchool">Escuela</label>
+          <label for="inputSchool">Institucion</label>
           <input
             type="text"
             class="form-control"
             id="inputSchool"
             placeholder="Enter school"
+            [(ngModel)]="modalData.escuela"
           />
         </div>
         <div class="form-group">
@@ -57,6 +97,7 @@
             class="form-control"
             id="inputTitle"
             placeholder="Enter title"
+            [(ngModel)]="modalData.titulo"
           />
         </div>
         <div class="form-group">
@@ -66,6 +107,7 @@
             class="form-control"
             id="inputSchoolImage"
             placeholder="Enter image"
+            [(ngModel)]="modalData.imagen"
           />
         </div>
         <div class="form-group">
@@ -75,15 +117,17 @@
             class="form-control"
             id="inputCareer"
             placeholder="Enter career"
+            [(ngModel)]="modalData.carrera"
           />
         </div>
         <div class="form-group">
           <label for="inputScore">GPA</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             id="inputScore"
             placeholder="Enter score"
+            [(ngModel)]="modalData.gpa"
           />
         </div>
         <div class="form-group">
@@ -93,6 +137,7 @@
             class="form-control"
             id="inputSchoolInitial"
             placeholder="Enter initial date"
+            [(ngModel)]="modalData.fechaInicio"
           />
         </div>
         <div class="form-group">
@@ -102,6 +147,7 @@
             class="form-control"
             id="inputSchoolEnd"
             placeholder="Enter end date"
+            [(ngModel)]="modalData.fechaFin"
           />
         </div>
       </div>
@@ -112,7 +158,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          onclick="saveNewEduModal()"
+          (click)="saveNewEduModal(persona.id)"
         >
           Save changes
         </button>

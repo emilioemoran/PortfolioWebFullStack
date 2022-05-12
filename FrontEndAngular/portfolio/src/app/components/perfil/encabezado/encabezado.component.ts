@@ -41,10 +41,11 @@ export class EncabezadoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  saveEditProfileModal(id: number) {
+  saveEditEncabezadoModal(id: number) {
     const body = this.modalData;
     this.portfolioService.modificarDatosPersona(id, body).subscribe((data) => {
       console.log(JSON.stringify('data' + data));
+      console.log('saliod');
       window.location.reload();
     });
   }

@@ -20,4 +20,53 @@ export class PortfolioService {
       body
     );
   }
+
+  modificarAcercaDePersona(id: number, body: any): Observable<any> {
+    return this.http.post<any>(this.url + 'persona/edit/acercade/' + id, body);
+  }
+
+  agregarExperiencia(id: number, body: any): Observable<any> {
+    return this.http.post<any>(
+      this.url + 'persona/new/experiencia/' + id,
+      body
+    );
+  }
+
+  eliminarExperiencia(id: number, experiencia: any): Observable<any> {
+    return this.http.post<any>(
+      this.url + 'persona/delete/experiencia/' + id,
+      experiencia
+    );
+  }
+
+  agregarEducacion(id: number, body: any): Observable<any> {
+    return this.http.post<any>(this.url + 'persona/new/educacion/' + id, body);
+  }
+
+  eliminarEducacion(id: number, educacion: any): Observable<any> {
+    return this.http.post<any>(
+      this.url + 'persona/delete/educacion/' + id,
+      educacion
+    );
+  }
+
+  agregarHabilidad(id: number, body: any): Observable<any> {
+    return this.http.post<any>(this.url + 'persona/new/habilidad/' + id, body);
+  }
+  borrarHabilidad(id: number, body: any): Observable<any> {
+    return this.http.post<any>(
+      this.url + 'persona/delete/habilidad/' + id,
+      body
+    );
+  }
+
+  agregarProyecto(id: number, body: any): Observable<any> {
+    return this.http.post<any>(this.url + 'persona/new/proyecto/' + id, body);
+  }
+  borrarProyecto(id: number, body: any): Observable<any> {
+    return this.http.post<any>(
+      this.url + 'persona/delete/proyecto/' + id,
+      body
+    );
+  }
 }

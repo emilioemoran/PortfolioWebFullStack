@@ -12,15 +12,30 @@
     </div>
   </div>
   <div class="achivements">
-    <h3>2</h3>
+    <h3>{{ persona.proyectos.length }}</h3>
     <div>
       <div class="project-title">
         <h3>Proyectos</h3>
       </div>
       <div>
         <ul class="project-list">
-          <li>App</li>
-          <li>App</li>
+          <div class="row row-cols-4 gx-5">
+            <li *ngFor="let proyecto of persona.proyectos">
+              <br />
+              <div class="col">
+                <button type="button" class="btn" [ngStyle]="getRandomColor()">
+                  {{ proyecto.nombre }}
+                </button>
+                <a class="btn btn-top"
+                  ><i
+                    class="fa fa-minus-circle"
+                    data-bs-toggle="modal"
+                    (click)="deleteProyModal(persona.id, proyecto)"
+                  ></i
+                ></a>
+              </div>
+            </li>
+          </div>
         </ul>
       </div>
     </div>
@@ -39,7 +54,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cargar Proyecto</h5>
         <button
           type="button"
           class="close"
@@ -57,6 +72,7 @@
             class="form-control"
             id="inputAch"
             placeholder="Enter Achivements"
+            [(ngModel)]="modalData.nombre"
           />
         </div>
       </div>
@@ -64,7 +80,13 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="saveNewProyModal(persona.id)"
+        >
+          Save changes
+        </button>
       </div>
     </div>
   </div>

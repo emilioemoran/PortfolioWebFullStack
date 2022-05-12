@@ -13,7 +13,45 @@
       </div>
     </div>
     <div>
-      <ul class="items-list" id="expList"></ul>
+      <ul class="items-list" id="expList">
+        <li *ngFor="let experiencia of persona.experiencias">
+          <div class="card mb-3" style="max-width: 540px">
+            <div class="col container-fluid">
+              <div class="row justify-content-md-right">
+                <a class="d-flex flex-row-reverse"
+                  ><i
+                    class="fa fa-minus-circle"
+                    (click)="deleteExperiencia(persona.id, experiencia)"
+                  ></i
+                ></a>
+              </div>
+              <div class="row container-fluid">
+                <div class="col-md-4">
+                  <img
+                    src="{{
+                      experiencia.imagen! ? experiencia.imagen : defoultImage
+                    }}"
+                    class="card-img"
+                    alt="Colocar Imagen URL"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ experiencia.posicion }}</h5>
+                    <h5 class="card-title">{{ experiencia.compania }}</h5>
+                    <p class="card-text">
+                      <small class="text-muted"
+                        >Desde: {{ experiencia.fechaInicio }} Hasta:
+                        {{ experiencia.fechaFin }}</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
@@ -30,7 +68,9 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">
+          Cargar Experiencia Laboral
+        </h5>
         <button
           type="button"
           class="close"
@@ -48,6 +88,7 @@
             class="form-control"
             id="inputPositionExp"
             placeholder="Enter position"
+            [(ngModel)]="modalData.posicion"
           />
         </div>
         <div class="form-group">
@@ -57,6 +98,7 @@
             class="form-control"
             id="inputCompanyExp"
             placeholder="Enter company"
+            [(ngModel)]="modalData.compania"
           />
         </div>
         <div class="form-group">
@@ -66,9 +108,10 @@
             class="form-control"
             id="inputImgExp"
             placeholder="Enter image"
+            [(ngModel)]="modalData.imagen"
           />
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="inputModeExp">Modo</label>
           <input
             type="text"
@@ -76,7 +119,7 @@
             id="inputModeExp"
             placeholder="Enter Mode"
           />
-        </div>
+        </div> -->
         <div class="form-group">
           <label for="inputInitialExp">Fecha Inicio</label>
           <input
@@ -84,6 +127,7 @@
             class="form-control"
             id="inputInitialExp"
             placeholder="Enter initial date"
+            [(ngModel)]="modalData.fechaInicio"
           />
         </div>
         <div class="form-group">
@@ -93,9 +137,10 @@
             class="form-control"
             id="inputEndExp"
             placeholder="Enter end date"
+            [(ngModel)]="modalData.fechaFin"
           />
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="inputTimeExp">Tiempo en el trabajo</label>
           <input
             type="text"
@@ -103,7 +148,7 @@
             id="inputTimeExp"
             placeholder="Enter time in position"
           />
-        </div>
+        </div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -112,7 +157,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          onclick="saveNewExpModal()"
+          (click)="saveNewExpModal(persona.id)"
         >
           Save changes
         </button>

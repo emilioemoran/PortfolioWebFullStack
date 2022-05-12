@@ -12,24 +12,28 @@
     </div>
   </div>
   <ol class="items-list">
-    <li>
+    <li *ngFor="let habilidad of persona.habilidades">
       <div class="aptitude-info">
-        <a href="#">
-          <p><span>Resolución de problemas</span> - 2</p>
+        <a
+          data-bs-toggle="modal"
+          data-bs-target="#delApt"
+          (click)="selectItem(habilidad)"
+          href="#"
+        >
+          <p>
+            <br />
+            <span>{{ habilidad.nombre }}</span>
+          </p>
           <div class="progress">
             <div
               class="progress-bar progress-bar-striped bg-success"
               role="progressbar"
-              style="width: 25%"
+              style="{{ habilidad.valor }}"
               aria-valuenow="25"
               aria-valuemin="0"
               aria-valuemax="100"
             ></div>
           </div>
-          <p>
-            <span>Nombre de los referentes</span> de contacto que han validado
-            esta aptitud.
-          </p>
         </a>
       </div>
     </li>
@@ -66,6 +70,17 @@
             class="form-control"
             id="inputApt"
             placeholder="Enter Aptitude"
+            [(ngModel)]="modalData.nombre"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputApt">Porcentaje</label>
+          <input
+            type="number"
+            class="form-control"
+            id="inputPorc"
+            placeholder="Enter Porcentaje"
+            [(ngModel)]="modalData.valor"
           />
         </div>
       </div>
@@ -73,7 +88,52 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="saveNewHabModal(persona.id)"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal delete  -->
+<div
+  class="modal fade"
+  id="delApt"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Aptitud</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="deleteHabModal(persona.id, myItemModal)"
+        >
+          Save changes
+        </button>
       </div>
     </div>
   </div>
