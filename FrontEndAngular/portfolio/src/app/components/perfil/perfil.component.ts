@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import { ActivatedRoute } from '@angular/router';
+import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 
 @Component({
   selector: 'app-perfil',
@@ -12,7 +13,8 @@ export class PerfilComponent implements OnInit {
   persona: any = {};
   constructor(
     private portfolioService: PortfolioService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private autenticationService: AutenticacionService
   ) {}
 
   ngOnInit(): void {
@@ -22,5 +24,9 @@ export class PerfilComponent implements OnInit {
       this.miPortfolio.username = data.username;
       this.persona = data.persona;
     });
+  }
+
+  logOut(): void {
+    sessionStorage.setItem('currentUser', JSON.stringify({}));
   }
 }
