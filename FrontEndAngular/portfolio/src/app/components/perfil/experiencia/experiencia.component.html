@@ -56,7 +56,7 @@
   </div>
 </div>
 
-<!-- Modal New Experience -->
+<!-- Modal Nueva experiencia -->
 <div
   class="modal fade"
   id="newExp"
@@ -111,15 +111,6 @@
             [(ngModel)]="modalData.imagen"
           />
         </div>
-        <!-- <div class="form-group">
-          <label for="inputModeExp">Modo</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputModeExp"
-            placeholder="Enter Mode"
-          />
-        </div> -->
         <div class="form-group">
           <label for="inputInitialExp">Fecha Inicio</label>
           <input
@@ -140,15 +131,6 @@
             [(ngModel)]="modalData.fechaFin"
           />
         </div>
-        <!-- <div class="form-group">
-          <label for="inputTimeExp">Tiempo en el trabajo</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputTimeExp"
-            placeholder="Enter time in position"
-          />
-        </div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -158,110 +140,6 @@
           type="button"
           class="btn btn-primary"
           (click)="saveNewExpModal(persona.id)"
-        >
-          Save changes
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Edit Experience -->
-<div
-  class="modal fade"
-  id="editExp"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button
-          type="button"
-          class="close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="inputCompanyExpEdit">Company</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputCompanyExpEdit"
-            placeholder="Enter company"
-            readonly
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputPositionExpEdit">Position</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputPositionExpEdit"
-            placeholder="Enter position"
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputImgExpEdit">Imagen</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputImgExpEdit"
-            placeholder="Enter image"
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputModeExpEdit">Modo</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputModeExpEdit"
-            placeholder="Enter Mode"
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputInitialExpEdit">Fecha Inicio</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputInitialExpEdit"
-            placeholder="Enter initial date"
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputEndExpEdit">Fecha Fin</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputEndExpEdit"
-            placeholder="Enter end date"
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputTimeExpEdit">Tiempo en el trabajo</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputTimeExpEdit"
-            placeholder="Enter time in position"
-          />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button
-          type="button"
-          class="btn btn-primary"
-          onclick="saveEditExpModal($('#inputCompanyExpEdit').val())"
         >
           Save changes
         </button>
