@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PortfolioService {
-  url: String = 'http://localhost:8080/';
+  url: String = 'https://whispering-cove-31308.herokuapp.com/';
   constructor(private http: HttpClient) {}
 
   obtenerDatosPersona(id: number): Observable<any> {

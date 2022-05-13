@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AutenticacionService {
-  url = 'http://localhost:8080/api/auth';
+  url = 'https://whispering-cove-31308.herokuapp.com/api/auth';
   currentUserSubject: BehaviorSubject<any>;
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<any>(
